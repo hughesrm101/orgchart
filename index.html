@@ -1,0 +1,235 @@
+<html lang="en">
+	<head>
+		<title title=" https://dzone.com/articles/css-flex-based-orgchart-with-zk" >Org Chart: RTG Digital Marketing Technology</title>
+		<link href="orgchart.css" rel="stylesheet" type="text/css"/>
+		<link href="orgchart-vertical.css" rel="stylesheet" type="text/css"/>
+		<link href="full.css" rel="stylesheet" type="text/css"/><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			function toggleNode( wgt )
+			{
+				jq( wgt ).closest( 'li' ).toggleClass( 'collapsed' );
+				jq( wgt ).find( 'i' ).toggleClass( 'z-icon-minus z-icon-plus' );
+			}
+		</script>
+
+		<style>
+			.leaf .nameTag
+			{
+				width:23em;
+			}
+			.nameTag {
+				max-width: 27em;
+				width:27em;
+				margin: auto;
+			}
+
+			.top_1{
+				background: red;
+				color: lightgray;
+			}
+
+			.top_2{
+				background: darkgreen;
+				color: lightgray;
+			}
+
+			.top_3{
+				background: mediumblue;
+				color: lightgray;
+			}
+
+			.top {
+				font-size: 200%;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				padding: 5px 10px 2px 10px;
+				text-align: center;
+				border: solid black 1px;
+				border-bottom: none;
+			}
+
+			.middle {
+				padding: 5px 10px 2px 10px;
+				border: solid black 1px;
+				border-top: none;
+				border-bottom: none;
+			}
+
+			.middle th {
+				text-align: left;
+			}
+
+			.bottom {
+				color: black;
+				background: lightgray;
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+				padding: 1.2em;
+				padding-top: .5em;
+				border: solid black 1px;
+				border-top: none;
+			}
+
+			img
+			{
+				border:outset gray 2px;
+			}
+
+			img:hover
+			{
+					transform: scale(10);
+			}
+
+			.left {
+				float: left;
+			}
+
+			.right {
+				float: right;
+			}
+		</style>
+		<style>
+			.name {
+				padding: 1em;
+				margin: 1em;
+				border: solid red 1px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<script id="node-template" type="text/template">
+
+			<li :class="{'leaf': person.directs.length == 0 || depth ==3}">
+				<orgchart-person :person="person" :depth="depth"></orgchart-person>
+				<ul v-if="person.directs.length > 0 && depth < 3">
+					<orgchart-node v-for="direct in person.directs"
+					               v-if="everyone[ direct ]"
+					               :person="everyone[ direct ]"
+					               :depth="depth + 1"
+					               :everyone="everyone"
+					               class="vertical"></orgchart-node>
+				</ul>
+			</li>
+
+		</script>
+
+		<script id="person-template" type="text/template">
+
+			<div class="nodecontent">
+				<div class="nameTag">
+					<div :class="'top top_' + depth" >
+						<b @click="setNewTop( person.name )">{{person.name}}</b>
+					</div>
+					<div class="middle">
+						<table>
+							<tr>
+								<td rowspan="99">
+									<img :src="'photos/' + person.name + '.jpg'" height="60" width="60">
+								</td>
+								<th>Title:</th>
+								<td>{{person.title}}</td>
+							</tr>
+							<tr>
+								<th>Dept:</th>
+								<td>{{person.department}}</td>
+							</tr>
+							<tr>
+								<th>Team:</th>
+								<td>{{person.team}}</td>
+							</tr>
+							<tr>
+								<th>Phone:</th>
+								<td>{{person.phone}}</td>
+							</tr>
+						</table>
+					</div>
+					<div class="bottom">
+						<span class="left">{{person.directs.length || "" }}</span> <span class="right">{{person.location}}</span>
+					</div>
+				</div>
+			</div>
+
+		</script>
+
+		<div class="centered" id="app-6">
+			<ul class="orgchart">
+				<orgchart-node :person="people[topPerson]"
+				               :everyone="people"
+				               :depth="1"
+				               :class="'root'"
+				               :key="people[ topPerson ].id"></orgchart-node>
+			</ul>
+		</div>http://localhost:63342/simpleOrgChart/index.html?_ijt=8dgpsk404cfpuq691kr4t87hnc&person=Aditya%20Sunchu
+	</body>
+
+	<script src="people.js"></script>
+	<script>
+		for( let person in people )
+		{
+			const minions = people[ person ].directs;
+			for( let i = 0; minions.length > i; i++ )
+			{
+				if( people[minions[i]])
+				{
+					people[ minions[ i ] ].manager = person;
+				}
+			}
+		}
+	</script>
+	<script>
+		const search = document.location.search;
+//		let name = "Rob Crigler";
+		let name = "Aditya Sunchu";
+		if(  search.indexOf( "person=" ) !== -1 )
+   {
+	   name = search.substr( search.indexOf( "person=" ) + 7 ).replace( "%20", " " );
+   }
+		else
+		{
+			document.location.href=document.location.href + "&person=" + name;
+		}
+		Vue.component( 'orgchart-node', {
+			props:    ['person', 'everyone', 'depth'],
+			template: '#node-template',
+			data:     function()
+			          {
+				          return {
+					          counter: this.initialCounter
+				          };
+			          }
+		} );
+
+		Vue.component( 'orgchart-person', {
+			props:    ['person', 'everyone', 'depth'],
+			template: '#person-template',
+			methods:
+			          {
+				          setNewTop:
+					          function( sName )
+					          {
+						          let newUrl = (document.location + "").replace( /person=.*/, "person=" + sName );
+						          if( newUrl === (document.location + "").replace( "%20", " " ) )
+						          {
+							          sName = getManager( sName );
+							          newUrl = (document.location + "").replace( /person=.*/, "person=" + sName );
+						          }
+						          document.location = newUrl;
+
+						          function getManager( sName )
+						          {
+							          return people[ sName ].manager;
+						          }
+					          }
+			          }
+		} );
+
+		var app6 = new Vue(
+			{
+				el:   '#app-6',
+				data: {
+					people:    people, // Object from people.js
+					topPerson: name
+				}
+			} );
+	</script>
