@@ -1,0 +1,211 @@
+<html lang="en">
+	<head>
+		<title>Org Chart https://dzone.com/articles/css-flex-based-orgchart-with-zk</title>
+		<link href="orgchart.css" rel="stylesheet" type="text/css"/>
+		<link href="orgchart-vertical.css" rel="stylesheet" type="text/css"/>
+		<link href="full.css" rel="stylesheet" type="text/css"/>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			function toggleNode( wgt )
+			{
+				jq( wgt ).closest( 'li' ).toggleClass( 'collapsed' );
+				jq( wgt ).find( 'i' ).toggleClass( 'z-icon-minus z-icon-plus' );
+			}
+		</script>
+
+		<style>
+			.nameTag {
+				max-width: 25em;
+				margin: auto;
+			}
+
+			.top {
+				font-size: 200%;
+				background: black;
+				color: lightgray;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				padding: 5px 10px 2px 10px;
+				text-align: center;
+				border: solid black 1px;
+				border-bottom: none;
+			}
+
+			.middle {
+				padding: 5px 10px 2px 10px;
+				border: solid black 1px;
+				border-top: none;
+				border-bottom: none;
+			}
+
+			.middle th {
+				text-align: left;
+			}
+
+			.bottom {
+				color: black;
+				background: lightgray;
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+				padding: 10px;
+				padding-top: 2px;
+				border: solid black 1px;
+				border-top: none;
+
+			}
+
+			.left {
+				float: left;
+			}
+
+			.right {
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="orgchart">
+			<li class="root">
+				<div class="nodecontent">0000000000</div>
+				<ul>
+					<li class="node">
+						<div class="nodecontent">aaaaaaaaaaaaa</div>
+						<ul>
+							<li class="vertical">
+								<div class="nodecontent"> bbbbbbbbb</div>
+								<ul>
+									<li class="leaf">
+										<div class="nodecontent">ccccccccccc</div>
+									</li>
+									<li class="leaf">
+										<div class="nodecontent">dddddddddddd</div>
+									</li>
+								</ul>
+							</li>
+							<li class="vertical">
+								<div class="nodecontent">eeeeeeeee</div>
+								<ul>
+									<li class="leaf">
+										<div class="nodecontent">ffffffffff</div>
+									</li>
+									<li class="leaf">
+										<div class="nodecontent">ggggggggg</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="vertical">
+						<div class="nodecontent">hhhhhhhhhhhh</div>
+						<ul>
+							<li class="leaf">
+								<div class="nodecontent">iiiiiiiiiii</div>
+							</li>
+							<li class="leaf">
+								<div class="nodecontent">jjjjjjjjjjj</div>
+							</li>
+							<li class="leaf">
+								<div class="nodecontent">kkkkkkkkkk</div>
+							</li>
+							<li class="leaf">
+								<div class="nodecontent">lllllllll</div>
+							</li>
+						</ul>
+					</li>
+
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<script id="template-person-hierarchy" type="text/template">
+
+			<div class="redundantContainer">
+				<orgchart-name-tag v-bind:person="person"></orgchart-name-tag>
+				<ul v-if="person.directs.length > 0">
+					<li class="xxx"
+					    :class="{leaf:depth==2}"
+					    :class="{node:depth<1}"
+					    :class="{vertical:depth == 1}"
+					    v-for="direct in person.directs"
+					    v-if="everyone[ direct ]">
+						<div v-if="everyone[direct]" class="nodecontent">
+							<orgchart-person-hierarchy :person="everyone[direct]"
+							                           :depth="depth+1"
+							                           :everyone="everyone"></orgchart-person-hierarchy>
+
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</script>
+
+		<script id="template-name-tag" type="text/template">
+
+			<div class="nodecontent" :class="{nonmanager: person.directs.length < 1}">
+				<div class="nameTag">
+					<div class="top">
+						<b>{{person.name}}</b>
+					</div>
+					<div class="middle">
+						<table>
+							<tr>
+								<td rowspan="99">
+									<img :src="'photos/' + person.name + '.jpg'" height="60" width="60" :alt="'photo of ' + person.name">
+								</td>
+								<th>Title:</th>
+								<td>{{person.title}}</td>
+							</tr>
+							<tr>
+								<th>Dept:</th>
+								<td>{{person.department}}</td>
+							</tr>
+							<tr>
+								<th>Team:</th>
+								<td>{{person.team}}</td>
+							</tr>
+						</table>
+					</div>
+					<div class="bottom">
+						<span class="left">{{person.directs.length}}</span> <span class="right">{{person.location}}</span>
+					</div>
+				</div>
+			</div>
+
+		</script>
+
+		<div class="centered" id="app-6">
+			<ul class="orgchart">
+				<li class="root">
+
+					<orgchart-person-hierarchy v-bind:person="people['Rob Crigler']"
+					                           v-bind:everyone="people"
+					                           v-bind:depth="1"
+					                           v-bind:key="people['Rob Crigler'].id"></orgchart-person-hierarchy>
+
+				</li>
+			</ul>
+		</div>
+	</body>
+
+	<script src="people.js"></script>
+	<script>
+
+		Vue.component( 'orgchart-person-hierarchy', {
+			props:    ['person', 'everyone', 'depth'],
+			template: '#template-person-hierarchy'
+		} );
+
+		Vue.component( 'orgchart-name-tag', {
+			props:    ['person', 'everyone', 'depth'],
+			template: '#template-name-tag'
+		} );
+
+		var app6 = new Vue(
+			{
+				el:   '#app-6',
+				data: {
+					people: people // Object from people.js
+				}
+			} );
+	</script>
