@@ -3,7 +3,8 @@
 		<title title=" https://dzone.com/articles/css-flex-based-orgchart-with-zk" >Org Chart: RTG Digital Marketing Technology</title>
 		<link href="orgchart.css" rel="stylesheet" type="text/css"/>
 		<link href="orgchart-vertical.css" rel="stylesheet" type="text/css"/>
-		<link href="full.css" rel="stylesheet" type="text/css"/><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link href="full.css" rel="stylesheet" type="text/css"/>
+		<script src="vue.js"></script>
 		<script>
 			function toggleNode( wgt )
 			{
@@ -78,6 +79,7 @@
 			img:hover
 			{
 					transform: scale(10);
+					z-index: 2;
 			}
 
 			.left {
@@ -160,7 +162,7 @@
 				               :class="'root'"
 				               :key="people[ topPerson ].id"></orgchart-node>
 			</ul>
-		</div>http://localhost:63342/simpleOrgChart/index.html?_ijt=8dgpsk404cfpuq691kr4t87hnc&person=Aditya%20Sunchu
+		</div>
 	</body>
 
 	<script src="people.js"></script>
