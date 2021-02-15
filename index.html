@@ -6,7 +6,16 @@
 		<link href="full.css" rel="stylesheet" type="text/css"/>
 		<script src="vue.js"></script>
 		<script>
-			
+			function init()
+			{
+				const aPictures = document.getElementsByClassName("thumbnail");
+				for( let i = 0; aPictures.length > i; i++ )
+				{
+					const oPicture = aPictures[ i ];
+					oPicture.src=oPicture.src.replace('/thumbnail/','/');
+				}
+				this.src=this.src.replace('/thumbnail/','/');this.onload=new Function();"
+			}
 			function toggleNode( wgt )
 			{
 				jq( wgt ).closest( 'li' ).toggleClass( 'collapsed' );
@@ -99,7 +108,7 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body onload="init()">
 
 		<script id="node-template" type="text/template">
 
