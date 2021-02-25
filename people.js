@@ -7,7 +7,7 @@ const people = {
 		phone:      'xxxx',
 		location:   'Seffner, FL',
 		directs:    [
-			'Eyal Rappaport', 'Janis Altshuler', 'Peter Weitzner', 'Randi Schnell', 'Rob Crigler'
+			'Eyal Rappaport', 'Janis Altshuler', 'Peter Weitzner', 'Mitch Allen', 'Randi Schnell', 'Rob Crigler'
 		]
 	},
 	'Eyal Rappaport':      {
@@ -51,7 +51,37 @@ const people = {
 		team:       '',
 		phone:      'xxxx',
 		location:   'Atlanta, GA',
-		directs:    []
+		directs:    ["Chad Lennon", "Melissa Tillitski", "Kendyl Tash"]
+	},
+	'Mitch Allen':         {
+		name:       'Mitch Allen',
+		title:      '',
+		department: 'Legal',
+		team:       '',
+		phone:      'xxxx',
+		location:   'Atlanta, GA',
+		directs:    [
+			"Nancy Chad",
+			"Patrick Cantrell",
+			"William Benefield",
+			"Jayson Sobhani",
+			"Philip Cochran"
+		]
+	},
+	'Michelle Boyea':         {
+		name:       'Michelle Boyea',
+		title:      '',
+		department: 'Legal',
+		team:       '',
+		phone:      'xxxx',
+		location:   'Atlanta, GA',
+		directs:    [
+
+			"Susie McBride",
+			"Mike Shenefield",
+			"Tiffany Venturino",
+			"Gabriella Chiovarelli"
+		]
 	},
 	'Russ Rosen':          {
 		name:       'Russ Rosen',
@@ -349,7 +379,7 @@ const people = {
 		directs:    ['Igor Vladimirovskiy', 'Matthew Schnell', 'Christopher Ellis', 'Brian Donegan']
 	},
 
-	'Daryl Ohrt':           {
+	'Daryl Ohrt': {
 		name:       'Daryl Ohrt',
 		title:      'Experience Designer',
 		department: 'Digital Marketing',
@@ -702,7 +732,7 @@ const people = {
 		location:   'Atlanta',
 		directs:    ['Layla Diep', 'Rachel Seiden']
 	},
-	'Kimberly Zdanowicz':     {
+	'Kimberly Zdanowicz':  {
 		name:       'Kimberly Zdanowicz',
 		title:      'Digital Media',
 		department: 'Marketing',
@@ -756,7 +786,7 @@ const people = {
 		location:   'Atlanta',
 		directs:    []
 	},
-	'Praveen Thampi':         {
+	'Praveen Thampi':      {
 		name:       'Praveen Thampi',
 		title:      'Data Integration Architect',
 		department: 'Dot Com',
@@ -845,7 +875,7 @@ const people = {
 		team:       'QA',
 		phone:      '678-628-7565',
 		location:   'Atlanta',
-		directs:    ['Asweej Venigalla', 'Lukas Deutz','Mike Nguyen', 'Mitchell Haas', "Sandra Amedome", 'Venu Yerra']
+		directs:    ['Asweej Venigalla', 'Lukas Deutz', 'Mike Nguyen', 'Mitchell Haas', "Sandra Amedome", 'Venu Yerra']
 	},
 	'Mike Nguyen':         {
 		name:       'Mike Nguyen',
@@ -883,7 +913,7 @@ const people = {
 		location:   'Seffner',
 		directs:    []
 	},
-	'Sandra Amedome':    {
+	'Sandra Amedome':      {
 		name:       'Sandra Amedome',
 		title:      'Manual Tester',
 		department: 'Dot Com',
@@ -930,7 +960,7 @@ const people = {
 		location:   'Seffner',
 		directs:    []
 	},
-	'Michael Coleman':   {
+	'Michael Coleman':  {
 		name:       'Michael Coleman',
 		title:      'Front End Developer',
 		department: 'Dot Com',
@@ -979,7 +1009,7 @@ const people = {
 		location:   'Atlanta',
 		directs:    []
 	},
-	'Benjamin Gray': {
+	'Benjamin Gray':  {
 		name:       'Benjamin Gray',
 		title:      'Front End Lead',
 		department: 'Dot Com',
