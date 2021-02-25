@@ -68,7 +68,7 @@ const people = {
 			"Philip Cochran"
 		]
 	},
-	'Michelle Boyea':         {
+	'Michelle Boyea':      {
 		name:       'Michelle Boyea',
 		title:      '',
 		department: 'Legal',
@@ -775,7 +775,14 @@ const people = {
 		team:       'Program Mangement',
 		phone:      '704-916-9610',
 		location:   'Atlanta',
-		directs:    ['Keith Kluksdahl','Kwabena Asenso-Okyere', 'Pamela Peacock', 'Richard Hughes', 'Schaquana Bates', 'Tim Jones']
+		directs:    [
+			'Keith Kluksdahl',
+			'Kwabena Asenso-Okyere',
+			'Pamela Peacock',
+			'Richard Hughes',
+			'Schaquana Bates',
+			'Tim Jones'
+		]
 	},
 	'Santhu Bala':         {
 		name:       'Santhu Bala',
