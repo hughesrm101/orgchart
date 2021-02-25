@@ -784,6 +784,15 @@ const people = {
 			'Tim Jones'
 		]
 	},
+	'Kwabena Asenso-Okyere':         {
+		name:       'Kwabena Asenso-Okyere',
+		title:      'Project Manager',
+		department: 'Dot Com',
+		team:       'Operations',
+		phone:      '678-982-9020',
+		location:   'Atlanta',
+		directs:    []
+	},
 	'Santhu Bala':         {
 		name:       'Santhu Bala',
 		title:      'Data Integration Developer',
