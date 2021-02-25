@@ -789,7 +789,7 @@ const people = {
 		title:      'Project Manager',
 		department: 'Dot Com',
 		team:       'Operations',
-		phone:      '678-982-9020',
+		phone:      '404-784-7113',
 		location:   'Atlanta',
 		directs:    []
 	},
