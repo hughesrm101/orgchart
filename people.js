@@ -7,7 +7,7 @@ const people = {
 		phone:      'xxxx',
 		location:   'Seffner, FL',
 		directs:    [
-			'Eyal Rappaport', 'Janis Altshuler', 'Peter Weitzner', 'Randi Schnell'
+			'Eyal Rappaport', 'Janis Altshuler', 'Peter Weitzner', 'Randi Schnell', 'Rob Crigler'
 		]
 	},
 	'Eyal Rappaport':      {
@@ -18,7 +18,7 @@ const people = {
 		phone:      'xxxx',
 		location:   'Atlanta, GA',
 		directs:    [
-			'Rob Crigler',
+
 			'Russ Rosen',
 			'Katie Hatch',
 			'Ed Biard',
@@ -407,9 +407,9 @@ const people = {
 		phone:      '678-628-0761',
 		location:   'Atlanta',
 		directs:    [
-			'Bruno Bronosky',
 			'Guido Van Verseveld',
 			'Josh Starrett',
+			'John Fullbright',
 			'Noah Kronemeyer',
 			'Leon Jones',
 			'Quincy Acklen'
@@ -516,7 +516,7 @@ const people = {
 		team:       'Infrastructure',
 		phone:      '404-992-7866',
 		location:   'Atlanta',
-		directs:    ['Sindhuja Aitha', 'Hani Momin', 'John Fullbright', 'Venkat Ravi']
+		directs:    []
 	},
 	'Venkat Ravi':    {
 		name:       'Venkat Ravi',
@@ -772,7 +772,8 @@ const people = {
 		team:       'Infrastructure',
 		phone:      '',
 		location:   'Atlanta',
-		directs:    []
+		directs:    ['Sindhuja Aitha', 'Hani Momin', 'Venkat Ravi', 'Bruno Bronosky']
+
 	},
 	'Alonso Rigg':         {
 		name:       'Alonso Rigg',
@@ -844,7 +845,7 @@ const people = {
 		team:       'QA',
 		phone:      '678-628-7565',
 		location:   'Atlanta',
-		directs:    ['Asweej Venigalla', 'Lukas Deutz','Mike Nguyen', 'Mitchell Haas', 'Venu Yerra']
+		directs:    ['Asweej Venigalla', 'Lukas Deutz','Mike Nguyen', 'Mitchell Haas', "Sandra Amedome", 'Venu Yerra']
 	},
 	'Mike Nguyen':         {
 		name:       'Mike Nguyen',
@@ -880,6 +881,15 @@ const people = {
 		team:       'QA',
 		phone:      '571-425-3428',
 		location:   'Seffner',
+		directs:    []
+	},
+	'Sandra Amedome':    {
+		name:       'Sandra Amedome',
+		title:      'Manual Tester',
+		department: 'Dot Com',
+		team:       'QA',
+		phone:      '',
+		location:   'Atlanta',
 		directs:    []
 	},
 	'Open1':               {
