@@ -823,10 +823,10 @@ const people = {
 	},
 	'Alonso Rigg':         {
 		name:       'Alonso Rigg',
-		title:      'Data Integration Developer',
+		title:      'Data Integration Architect',
 		department: 'Dot Com',
 		team:       'Data',
-		phone:      '',
+		phone:      '404-310-5313',
 		location:   'Atlanta',
 		directs:    []
 	},
