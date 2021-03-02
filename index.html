@@ -8,18 +8,22 @@
 		<script>
 			function init()
 			{
-				const aPictures = document.getElementsByClassName("thumbnail");
-				for( let i = 0; aPictures.length > i; i++ )
-				{
-					const oPicture = aPictures[ i ];
-					oPicture.src=oPicture.src.replace('/thumbnail/','/');
-				}
-				this.src=this.src.replace('/thumbnail/','/');this.onload=new Function();"
 			}
 			function toggleNode( wgt )
 			{
 				jq( wgt ).closest( 'li' ).toggleClass( 'collapsed' );
 				jq( wgt ).find( 'i' ).toggleClass( 'z-icon-minus z-icon-plus' );
+			}
+
+			function embiggen( oPicture )
+			{
+				oPicture.src=oPicture.src.replace('/thumbnails/','/');
+				oPicture.style.border = "none";
+			}
+
+			function enshrinken( oPicture )
+			{
+				oPicture.style.border = "outset gray 2px";
 			}
 		</script>
 
@@ -137,7 +141,7 @@
 						<table>
 							<tr>
 								<td rowspan="99">
-									<img :src="'photos/' + person.name + '.jpg'" height="60" width="60">
+									<img :src="'photos/thumbnails/' + person.name + '.jpg'" onmouseover="embiggen( this )" onmouseout="enshrinken( this )" height="60" width="60">
 								</td>
 								<th>Title:</th>
 								<td>{{person.title}}</td>
